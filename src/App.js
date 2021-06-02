@@ -17,7 +17,7 @@ const App = () => {
             component={() => <Login setLogin={setLogin} />}
             exact
           />
-          <Route path="/profile" component={Profile} exact />
+          {login && <Route path="/profile" component={Profile} exact />}
         </Switch>
       </>
     </Router>
