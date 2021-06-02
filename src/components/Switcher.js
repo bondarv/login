@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Switcher = ({ loginState }) => {
-  const direction = loginState ? "/profile" : "/login";
+const Switcher = ({ isAuthenticated }) => {
+  const direction = isAuthenticated ? "/profile" : "/login";
 
   return (
     <div className="switcher-div">
