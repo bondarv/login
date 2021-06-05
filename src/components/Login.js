@@ -1,10 +1,12 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import GoogleLogin from 'react-google-login';
 
-const Login = () => {
-  const { loginWithRedirect } = useAuth0();
-
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
-};
+const Login = ({ setUser }) => (
+  <GoogleLogin
+    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+    buttonText="Login"
+    onSuccess={({ profileObj }) => setUser(profileObj)}
+    cookiePolicy={'single_host_origin'}
+  />
+);
 
 export default Login;

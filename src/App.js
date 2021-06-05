@@ -1,22 +1,28 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Main, Login, Profile, Switcher } from './components';
 import './App.css';
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const [user, setUser] = useState({});
+  const isAuthenticated = user.googleId;
 
   return (
     <Router>
-      <>
-        <Switcher isAuthenticated={isAuthenticated} />
-        <Switch>
-          <Route path="/" component={Main} exact />
-          <Route path="/login" component={Login} />
-          {isAuthenticated && <Route path="/profile" component={Profile} />}
-        </Switch>
-      </>
+      <Switcher isAuthenticated={isAuthenticated} />
+      <Switch>
+        <Route path="/" exact>
+          <Main />
+        </Route>
+        <Route path="/login">
+          <Login setUser={setUser} />
+        </Route>
+        {isAuthenticated && (
+          <Route path="/profile">
+            <Profile user={user} />
+          </Route>
+        )}
+      </Switch>
     </Router>
   );
 }
