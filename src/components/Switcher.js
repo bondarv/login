@@ -1,22 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Switcher = ({ isAuthenticated }) => {
-  const direction = isAuthenticated ? "/profile" : "/login";
-
-  return (
-    <div className="switcher-div">
-      <Link to="/">
-        <button className="switcher">main</button>
-      </Link>
-      <Link to="/login">
-        <button className="switcher">login</button>
-      </Link>
-      <Link to={direction}>
-        <button className="switcher">profile</button>
-      </Link>
-    </div>
-  );
-};
+const Switcher = ({ isAuthenticated }) => (
+  <div className="switcher-div">
+    <Link to="/">
+      <button>main</button>
+    </Link>
+    <Link to="/login">
+      <button>login</button>
+    </Link>
+    <Link to={isAuthenticated ? '/profile' : '/login'}>
+      <button>profile</button>
+    </Link>
+  </div>
+);
 
 export default Switcher;

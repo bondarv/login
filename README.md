@@ -1,4 +1,4 @@
-![alt text](task.png "Task")
+![alt text](task.png 'Task')
 
 # Getting Started with Create React App
 
